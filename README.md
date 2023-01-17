@@ -1,27 +1,21 @@
-# TIL
+# TIL(2023.01.17)
 
-## CSS in JavaScript
+## Event
 
-자바스크립트에서 CSS를 컨트롤할 때 다음과 같이 작성한다.
-
-1. querySelector를 이용해 원하는 HTML 태그를 가져온다.
-2. 가져온 태그에 addEventListener를 붙여준다.
-3. 그리고 원하는 동작을 함수 파라미터에 넘겨준다.(ex. click, resize etc..)
-4. 두 번째 파라미터에는 동작 시 어떻게 동작할 지에 대한 함수를 넣어준다. 아래의 예시는 클릭 시 글씨색이 변하는 함수를 넘겨줬다.
+- querySelector를 이용할 때 id 속성을 가진 태그를 가져오려면 '#'를, class 속성을 가진 태그를 가져오려면 '.'을 필수로 입력해줘야한다.
+- console.dir(input) 을 해보면 여러 가지 input의 속성을 확인할 수 있는데 이번 시간에는 value를 확인하는 시간을 가졌고,
+  input에 입력한 value를 console.log() 해봤다.
+- 이벤트리스너 click 를 통해 클릭 시 input value 에 입력된 값을 출력할 수 있다.
 
 ```javascript
-const h1 = document.querySelector("#title h1");
+const loginForm = document.querySelector("#login-form"); // #login 안에 있는 요소를 탐색할 수 있음.
+const loginInput = loginForm.querySelector("input"); // #login-form input
+const loginButton = loginForm.querySelector("button");
 
-function handleTitleClick() {
-  const currentColor = h1.style.color;
-  let newColor;
-  if (currentColor === "blue") {
-    newColor = "tomato";
-  } else {
-    newColor = "blue";
-  }
-  h1.style.color = newColor;
+function handleBtnClick() {
+  console.log(loginInput.value);
+  console.log("click");
 }
 
-h1.addEventListener("click", handleTitleClick);
+loginButton.addEventListener("click", handleBtnClick);
 ```
